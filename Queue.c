@@ -1,48 +1,61 @@
 #include <stdio.h>
 #define MAXSIZE 10
-int stack[MAXSIZE], top=-1;
 
-int isfull()
+int queue[MAXSIZE];
+int front,rear;
+
+int isFull()
 { //returns 1 if stack is full else -1
-	if(top==(MAXSIZE-1))
-		return 1;
-	else
-		return-1;
+	return (rear==(MAXSIZE-1));
 }
 
-int isempty()
+int isEmpty()
 {//returns 1 if stack is full else -1
-	if (top==-1)
-		return 1;
-	else
-		return -1;
+		return (rear==-1 && front==-1;)
 }
 
 int peek()
 {//returns the element at the top of the stack
-	return stack[top];
+	return queue[front];
 }
 
-int push(int e)
-{  //inserts an element in the stack
-	if(isfull()==1)
-		printf("STACK OVERFLOW\n");
-	else
+void insert(int d)
+{
+	if(isFull())
 	{
-		stack[++top]=e;
-		printf("element successfully inserted\n");
+		printf("queue is full");
+		return;
 	}
+	else
+	{	rear++;
+		queue[rear]=d;
+			if(front==-1)
+				front++;
+	}
+	printf("Element successfully inserted");
 }
 
-void pop()
-{  //deletes an element from the stack
-	if(isempty()==1)
-		printf("STACK UNDERFLOW\n");
+void Delete()
+{
+	if(isEmpty())
+	{
+		printf("Queue is empty");
+		return;
+	}
 	else
 	{
-		int d=stack[top--];
-		printf("%d successfully deleted\n",d);
-	}
+		d=queue[front];
+			if(front==rear)
+			{
+				front=-1;
+				rear=-1;
+			}
+			else
+			{
+				front++;
+			}
+			
+	}	
 }
 
 int main()
