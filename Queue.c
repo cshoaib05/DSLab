@@ -2,7 +2,7 @@
 #define MAXSIZE 10
 
 int queue[MAXSIZE];
-int front,rear;
+int front=-1,rear=-1;
 
 int isFull()
 { //returns 1 if stack is full else -1
@@ -11,15 +11,24 @@ int isFull()
 
 int isEmpty()
 {//returns 1 if stack is full else -1
-		return (rear==-1 && front==-1;)
+		return (rear==-1 && front==-1);
 }
 
-int peek()
-{//returns the element at the top of the stack
-	return queue[front];
+void Display()
+{	int i;
+	if(!isEmpty())
+	{
+	printf("The Elemnet of Queue are \n");
+	for(i=front;i<=rear;i++)
+		printf("%d\t",queue[i]);
+	}
+	else
+	{
+		printf("Queue is Empty");
+	} 
 }
 
-void insert(int d)
+void Insert(int d)
 {
 	if(isFull())
 	{
@@ -36,7 +45,7 @@ void insert(int d)
 }
 
 void Delete()
-{
+{ int d;
 	if(isEmpty())
 	{
 		printf("Queue is empty");
@@ -63,17 +72,17 @@ int main()
     int ch,e;
     do
     {
-        printf("\n\tMENU\n1.PEEK\n2.POP\n3.PUSH\n4.EXIT\nEnter your choice:");
+        printf("\n\tMENU\n1.DISPLAY\n2.DELETE\n3.INSERT\n4.EXIT\nEnter your choice:");
         scanf("%d",&ch);
         switch(ch)
         {
-            case 1:printf("the topmost element is:%d",peek());
+            case 1:Display();
                    break;
-            case 2:pop();
+            case 2:Delete();
                    break;
-            case 3:printf("\nenter the element to be pushed:");
+            case 3:printf("\nEnter the element to be inserted:");
                    scanf("%d",&e);
-                   push(e);
+                   Insert(e);
                    break;
             case 4:return 0;
         }
